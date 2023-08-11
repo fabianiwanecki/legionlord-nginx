@@ -19,11 +19,11 @@ RUN chown -R www-data:www-data /var/lib/nginx
 # expose ports
 EXPOSE 80 443
 
-# add nginx staging conf
+# add nginx live conf
 ADD config/api.legionlord.com /etc/nginx/sites-available/api.legionlord.com
 
 # create symlinks
-RUN ln -s /etc/nginx/sites-available/api.legionlord.com /etc/nginx/sites-enabled/api.legionlord.com
+RUN ln -s /etc/nginx/sites-available/api.legionlord.com /etc/nginx/sites-enabled/api.legionlord
 
 # work dir
 WORKDIR /etc/nginx
