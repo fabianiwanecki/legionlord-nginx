@@ -1,3 +1,7 @@
+upstream legionlord-docker {
+    server legionlord_default:9090;
+}
+
 server {
     listen 80;
     listen [::]:80;
@@ -9,6 +13,8 @@ server {
     }
 }
 
+
+
 server {
     listen 443 ssl;
     server_name api.legionlord.com www.api.legionlord.com;
@@ -17,6 +23,6 @@ server {
     ssl_certificate_key /etc/letsencrypt/live/api.legionlord.com/privkey.pem;
 
     location / {
-        proxy_pass  http://api.legionlord.com:9090;
+        proxy_pass  http://legionlord-docker;
     }
 }
